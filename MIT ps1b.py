@@ -6,6 +6,7 @@ Created on Thu Jan 27 00:34:04 2022
  
 ## PS1 Part B: Semi-Annual Raise
 
+
 # Variables
 
 annual_salary = float(input("Enter your annual salary:"))

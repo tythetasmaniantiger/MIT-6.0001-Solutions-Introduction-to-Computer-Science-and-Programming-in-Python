@@ -6,6 +6,7 @@ Created on Wed Jan 26 23:57:01 2022
 
 ## PS1 Part A: House Hunting
 
+
 # Variables
 
 annual_salary = float(input("Enter your annual salary:"))

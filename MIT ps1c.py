@@ -7,6 +7,7 @@ Created on Thu Jan 27 02:10:31 2022
 
 import statistics as stat
 
+
 # Variables
 
 starting_salary = float(input("Enter Starting Salary:"))
@@ -23,7 +24,6 @@ down_payment_cost = total_cost * portion_down_payment
 
 def remaining_cost(portion_saved):
     '''
-    
     Parameters
     ----------
     portion_saved : float, the ratio of annual salary saved towards down payment,
@@ -33,7 +33,6 @@ def remaining_cost(portion_saved):
     -------
     difference: float, the difference between down_payment_cost and current_savings
     after 36 months
-
     '''
     monthly_savings = (starting_salary/12) * portion_saved
     current_savings = 0
