@@ -262,6 +262,7 @@ def show_possible_matches(my_word, letters_guessed):
     for k in range(len(wordlist)):
         if match_with_gaps(my_word,letters_guessed,wordlist[k]):
             print(wordlist[k])
+    return("")
     
 
 def hangman_with_hints(secret_word):
