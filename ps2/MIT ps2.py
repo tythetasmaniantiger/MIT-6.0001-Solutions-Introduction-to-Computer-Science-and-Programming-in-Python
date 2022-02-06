@@ -142,24 +142,24 @@ def hangman(secret_word):
         
         # Checking if guessed letter is valid
         if guess not in string.ascii_lowercase or len(guess) > 1:
-            warnings_remaining += -1
+            warnings_remaining -= 1
             print("Oops! That is not a valid letter.")
             if warnings_remaining >= 0:
                 print("You have",warnings_remaining,"warnings left.")
                 print(get_guessed_word(secret_word, letters_guessed))
             else:
-                guesses_remaining += -1
+                guesses_remaining -= 1
                 print("You have",guesses_remaining,"guesses left.")
                 print(get_guessed_word(secret_word, letters_guessed))    
             continue
         elif guess in letters_guessed:
-            warnings_remaining += -1
+            warnings_remaining -= 1
             print("Oops! You've already guessed that letter.")
             if warnings_remaining >= 0:
                 print("You have",warnings_remaining,"warnings left.")
                 print(get_guessed_word(secret_word, letters_guessed))
             else:
-                guesses_remaining += -1
+                guesses_remaining -= 1
                 print("You have",guesses_remaining,"guesses left.")
                 print(get_guessed_word(secret_word, letters_guessed))    
             continue
@@ -176,9 +176,9 @@ def hangman(secret_word):
         else:
             print("Oops! That letter is not in my word:",guessed_word_after)
             if guess in "aeiou":
-                guesses_remaining += -2
+                guesses_remaining -= 2
             else:
-                guesses_remaining += -1
+                guesses_remaining -= 1
     #end of loop
     
     if score > 0:
@@ -295,32 +295,32 @@ def hangman_with_hints(secret_word):
         
         # Checking if guessed letter is valid. Invalid -> restart loop
         if guess == "*" and hint_available:
-            hints_remaining += -1
+            hints_remaining -= 1
             print(show_possible_matches(guessed_word_before, letters_guessed))
             continue
         elif guess == "*" and hints_remaining == 0:
-            hints_remaining += -1
+            hints_remaining -= 1
             print("Oh no! You are out of hints.")
             continue
         elif guess not in string.ascii_lowercase or len(guess) > 1:
-            warnings_remaining += -1
+            warnings_remaining -= 1
             print("Oops! That is not a valid letter.")
             if warnings_remaining >= 0:
                 print("You have",warnings_remaining,"warnings left.")
                 print(get_guessed_word(secret_word, letters_guessed))
             else:
-                guesses_remaining += -1
+                guesses_remaining -= 1
                 print("You have",guesses_remaining,"guesses left.")
                 print(get_guessed_word(secret_word, letters_guessed))    
             continue
         elif guess in letters_guessed:
-            warnings_remaining += -1
+            warnings_remaining -= 1
             print("Oops! You've already guessed that letter.")
             if warnings_remaining >= 0:
                 print("You have",warnings_remaining,"warnings left.")
                 print(get_guessed_word(secret_word, letters_guessed))
             else:
-                guesses_remaining += -1
+                guesses_remaining -= 1
                 print("You have",guesses_remaining,"guesses left.")
                 print(get_guessed_word(secret_word, letters_guessed))    
             continue
@@ -337,9 +337,9 @@ def hangman_with_hints(secret_word):
         else:
             print("Oops! That letter is not in my word:",guessed_word_after)
             if guess in "aeiou":
-                guesses_remaining += -2
+                guesses_remaining -= 2
             else:
-                guesses_remaining += -1
+                guesses_remaining -= 1
     #end of loop
     
     if score > 0:
@@ -363,13 +363,13 @@ if __name__ == "__main__":
     # To test part 2, comment out the pass line above and
     # uncomment the following two lines.
     
-    secret_word = choose_word(wordlist)
-    hangman(secret_word)
+    #secret_word = choose_word(wordlist)
+    #hangman(secret_word)
 
 ###############
     
     # To test part 3 re-comment out the above lines and 
     # uncomment the following two lines. 
     
-    #secret_word = choose_word(wordlist)
-    #hangman_with_hints(secret_word)
+    secret_word = choose_word(wordlist)
+    hangman_with_hints(secret_word)
