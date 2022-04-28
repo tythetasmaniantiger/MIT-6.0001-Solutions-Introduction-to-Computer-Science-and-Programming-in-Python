@@ -1,0 +1,76 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar 16 07:58:18 2022
+
+@author: gregoryarps
+"""
+
+def decrypt_message(self):
+    '''
+    Attempt to decrypt the encrypted message 
+    
+    Idea is to go through each permutation of the vowels and test it
+    on the encrypted message. For each permutation, check how many
+    words in the decrypted text are valid English words, and return
+    the decrypted message with the most English words.
+    
+    If no good permutations are found (i.e. no permutations result in 
+    at least 1 valid word), return the original string. If there are
+    multiple permutations that yield the maximum number of words, return any
+    one of them.
+
+    Returns: the best decrypted message    
+    
+    Hint: use your function from Part 4A
+    '''
+    perms = get_permutations(VOWELS_LOWER)
+    score = 0
+    for elt in perms:
+        transpose_dict = self.build_transpose_dict(elt)
+        new_message = self.apply_transpose(transpose_dict)
+        word_list = new_message.split(" ")
+        
+        matches = 0
+        for word in word_list:
+            matches += is_word(self.valid_words, word)
+            
+        if matches >= score:
+            score = matches
+            decrypt_message = new_message
+            
+    return decrypt_message
+
+
+
+  def decrypt_message(self):
+      '''
+      Attempt to decrypt the encrypted message 
+      
+      Idea is to go through each permutation of the vowels and test it
+      on the encrypted message. For each permutation, check how many
+      words in the decrypted text are valid English words, and return
+      the decrypted message with the most English words.
+      
+      If no good permutations are found (i.e. no permutations result in 
+      at least 1 valid word), return the original string. If there are
+      multiple permutations that yield the maximum number of words, return any
+      one of them.
+
+      Returns: the best decrypted message    
+      
+      Hint: use your function from Part 4A
+      '''
+      perms = get_permutations(VOWELS_LOWER)
+      for elt in perms:
+          transpose_dict = self.build_transpose_dict(elt)
+          new_message = self.apply_transpose(transpose_dict)
+          word_list = new_message.split(" ")
+          
+          possible_match = True
+          for word in word_list:
+              possible_match *= is_word(self.valid_words, word)
+              
+          if possible_match:
+              return new_message 
+                  
